@@ -1,0 +1,47 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - IPHIS</title>
+    <link href="~/Images/Icon/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="~/Images/Icon/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+   
+    @Styles.Render("~/Content/bootstrap.css")
+    @*@Styles.Render("~/Content/bootstrap.min.css")*@
+    @*@Styles.Render("~/Content/bootstrap-theme.css")*@
+    @*@Styles.Render("~/Content/bootstrap-theme.min.css")*@
+    @Styles.Render("~/Content/Site.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body class="head" style="background-image:url('../../Images/default-bg.jpg'); background-size:cover">
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-hea">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                @*<span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>*@
+            </button>
+            <img class="logo" src="../Images/logo.png" alt="logo"/>
+            @*@Html.ActionLink("IPHIS", "Home", "Home", new { area = "" }, new { @class = "navbar-brand"})*@
+            <h6 class="navbar-brand-sub">"Immutable Personal Health Information System"</h6>
+        </div>
+        
+@*<div class="container" style="background-image:url('../Images/792558_teal-wallpapers-wallpapers-cave_1024x768_h.jpg'); background-size:cover">*@
+
+    @RenderBody()
+    
+    <footer class="navbar-inverse" style="margin-top:15px ">
+        <img class="logo-footer" src="../Images/logo.png" alt="logo" />
+        <p class="footer-content">&copy; @DateTime.Now.Year - IPHIS</p>
+    </footer>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+    </body>
+</html>

@@ -1,0 +1,32 @@
+﻿@*@model ConnectionSQL_webAPI_.Models.User*@
+
+@{
+    ViewBag.Title = "Verify Account";
+}
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li><img class="nav-icon" src="~/Images/Icon/Home.png" />@Html.ActionLink("Home", "Index", "Intro")</li>
+        <li><img class="nav-icon" src="~/Images/Icon/About1.png" />@Html.ActionLink("About", "About", "Home")</li>
+        <li style="width:95px"><img class="nav-icon" src="~/Images/Icon/Contact.png" />@Html.ActionLink("Contact", "Contact", "Home")</li>
+        <li class="emergency" style="width:115px"><img class="nav-icon" src="~/Images/Icon/Emergency.png" />@Html.ActionLink("Emergency", "Contact", "Home")</li>
+        <li style="width:95px"><img class="nav-icon" src="~/Images/Icon/Register.png" />@Html.ActionLink("Register", "Registration", "User")</li>
+        <li style="float:right"><img class="nav-icon" src="~/Images/Icon/Login.png" />@Html.ActionLink("Login", "Login", "User")</li>
+    </ul>
+</div>
+    </div>
+</div>
+
+<h2>Verify Account</h2>
+@if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+{
+    <div class="alert alert-success">
+        <strong>Success!</strong> Your account has been activated successfully. Click here to @Html.ActionLink("Login", "Login", "User")
+    </div>
+}
+else
+{
+    <div class="alert alert-danger">
+        <strong>Error!</strong> @ViewBag.Message
+    </div>
+}
+

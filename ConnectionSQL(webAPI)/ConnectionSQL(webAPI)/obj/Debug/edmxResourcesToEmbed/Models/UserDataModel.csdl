@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IPHISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnswerId" />
+    </Key>
+    <Property Name="AnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SecurityQuestionId" Type="Int32" />
+    <Property Name="Answer1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Answer2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Answer3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SecurityQuestion" Relationship="Self.FK_Answer_SecurityQuestion" FromRole="Answer" ToRole="SecurityQuestion" />
+    <NavigationProperty Name="UserSecAnsDetails" Relationship="Self.FK_UserSecAnsDetails_Answer" FromRole="Answer" ToRole="UserSecAnsDetails" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="State" Relationship="Self.FK_City_State" FromRole="City" ToRole="State" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CountryCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="States" Relationship="Self.FK_State_Country" FromRole="Country" ToRole="State" />
+  </EntityType>
+  <EntityType Name="SecurityQuestion">
+    <Key>
+      <PropertyRef Name="SecurityQuestionId" />
+    </Key>
+    <Property Name="SecurityQuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SecurityQuestion1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SecurityQuestion2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SecurityQuestion3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_SecurityQuestion" FromRole="SecurityQuestion" ToRole="Answer" />
+    <NavigationProperty Name="UserSecAnsDetails" Relationship="Self.FK_UserSecAnsDetails_SecurityQuestion" FromRole="SecurityQuestion" ToRole="UserSecAnsDetails" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CountryId" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cities" Relationship="Self.FK_City_State" FromRole="State" ToRole="City" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_State_Country" FromRole="State" ToRole="Country" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserUniqueId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CountryId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="CityId" Type="Int32" />
+    <Property Name="AddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Pincode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="UserTypeId" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserType" Relationship="Self.FK_User_UserType" FromRole="User" ToRole="UserType" />
+    <NavigationProperty Name="UserLoginDetails" Relationship="Self.FK_UserLoginDetails_User" FromRole="User" ToRole="UserLoginDetails" />
+    <NavigationProperty Name="UserSecAnsDetails" Relationship="Self.FK_UserSecAnsDetails_User" FromRole="User" ToRole="UserSecAnsDetails" />
+    <Property Name="ActivationCode" Type="Guid" />
+    <Property Name="ResetPasswordCode" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UserLoginDetail">
+    <Key>
+      <PropertyRef Name="UserLoginDetailsId" />
+    </Key>
+    <Property Name="UserLoginDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="LoginAttemp" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SysGeneratedEmailCode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SysGeneratedMobileCode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IsEmailVerified" Type="Boolean" />
+    <Property Name="IsPhoneNumberVerified" Type="Boolean" />
+    <Property Name="IsForgotPassword" Type="Boolean" />
+    <Property Name="LastPasswordResetDate" Type="DateTime" Precision="0" />
+    <Property Name="LoginMachineIp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastLoginDate" Type="DateTime" Precision="0" />
+    <Property Name="IsActiveUser" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserLoginDetails_User" FromRole="UserLoginDetails" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserSecAnsDetail">
+    <Key>
+      <PropertyRef Name="UserSecAnsDetailsId" />
+    </Key>
+    <Property Name="UserSecAnsDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="SecurityQuestionId" Type="Int32" />
+    <Property Name="AnswerId" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Answer" Relationship="Self.FK_UserSecAnsDetails_Answer" FromRole="UserSecAnsDetails" ToRole="Answer" />
+    <NavigationProperty Name="SecurityQuestion" Relationship="Self.FK_UserSecAnsDetails_SecurityQuestion" FromRole="UserSecAnsDetails" ToRole="SecurityQuestion" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserSecAnsDetails_User" FromRole="UserSecAnsDetails" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="UserTypeId" />
+    </Key>
+    <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_UserType" FromRole="UserType" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Answer_SecurityQuestion">
+    <End Role="SecurityQuestion" Type="Self.SecurityQuestion" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityQuestion">
+        <PropertyRef Name="SecurityQuestionId" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="SecurityQuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSecAnsDetails_Answer">
+    <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+    <End Role="UserSecAnsDetails" Type="Self.UserSecAnsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="AnswerId" />
+      </Principal>
+      <Dependent Role="UserSecAnsDetails">
+        <PropertyRef Name="AnswerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_City_State">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_State_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="State" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSecAnsDetails_SecurityQuestion">
+    <End Role="SecurityQuestion" Type="Self.SecurityQuestion" Multiplicity="0..1" />
+    <End Role="UserSecAnsDetails" Type="Self.UserSecAnsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityQuestion">
+        <PropertyRef Name="SecurityQuestionId" />
+      </Principal>
+      <Dependent Role="UserSecAnsDetails">
+        <PropertyRef Name="SecurityQuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserType">
+    <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="UserTypeId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLoginDetails_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserLoginDetails" Type="Self.UserLoginDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserLoginDetails">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSecAnsDetails_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserSecAnsDetails" Type="Self.UserSecAnsDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserSecAnsDetails">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UserModels" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Answers" EntityType="Self.Answer" />
+    <EntitySet Name="Cities" EntityType="Self.City" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="SecurityQuestions" EntityType="Self.SecurityQuestion" />
+    <EntitySet Name="States" EntityType="Self.State" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserLoginDetails" EntityType="Self.UserLoginDetail" />
+    <EntitySet Name="UserSecAnsDetails" EntityType="Self.UserSecAnsDetail" />
+    <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+    <AssociationSet Name="FK_Answer_SecurityQuestion" Association="Self.FK_Answer_SecurityQuestion">
+      <End Role="SecurityQuestion" EntitySet="SecurityQuestions" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSecAnsDetails_Answer" Association="Self.FK_UserSecAnsDetails_Answer">
+      <End Role="Answer" EntitySet="Answers" />
+      <End Role="UserSecAnsDetails" EntitySet="UserSecAnsDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
+      <End Role="State" EntitySet="States" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="State" EntitySet="States" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSecAnsDetails_SecurityQuestion" Association="Self.FK_UserSecAnsDetails_SecurityQuestion">
+      <End Role="SecurityQuestion" EntitySet="SecurityQuestions" />
+      <End Role="UserSecAnsDetails" EntitySet="UserSecAnsDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserType" Association="Self.FK_User_UserType">
+      <End Role="UserType" EntitySet="UserTypes" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLoginDetails_User" Association="Self.FK_UserLoginDetails_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserLoginDetails" EntitySet="UserLoginDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSecAnsDetails_User" Association="Self.FK_UserSecAnsDetails_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserSecAnsDetails" EntitySet="UserSecAnsDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

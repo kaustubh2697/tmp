@@ -1,0 +1,772 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IPHISModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="Int32" Nullable="false" />
+    <Property Name="AddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CityId" Type="Int32" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="CountryId" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="City" Relationship="Self.FK_Address_City" FromRole="Address" ToRole="City" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Address_Country" FromRole="Address" ToRole="Country" />
+    <NavigationProperty Name="State" Relationship="Self.FK_Address_State" FromRole="Address" ToRole="State" />
+    <NavigationProperty Name="Hospitals" Relationship="Self.FK_Hospital_Address" FromRole="Address" ToRole="Hospital" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_Address" FromRole="Address" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnswerId" />
+    </Key>
+    <Property Name="AnswerId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="QuestionId1" Type="Int32" />
+    <Property Name="Answer1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="QuestionId2" Type="Int32" />
+    <Property Name="Answer2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="QuestionId3" Type="Int32" />
+    <Property Name="Answer3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SecurityQuestion" Relationship="Self.FK_Answer_SecurityQuestions" FromRole="Answer" ToRole="SecurityQuestions" />
+    <NavigationProperty Name="SecurityQuestion1" Relationship="Self.FK_Answer_SecurityQuestions1" FromRole="Answer" ToRole="SecurityQuestions" />
+    <NavigationProperty Name="SecurityQuestion2" Relationship="Self.FK_Answer_SecurityQuestions2" FromRole="Answer" ToRole="SecurityQuestions" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Answer_User" FromRole="Answer" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="AppointmentId" />
+    </Key>
+    <Property Name="AppointmentId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="DoctorId" Type="Int32" />
+    <Property Name="HospitalId" Type="Int32" />
+    <Property Name="AppointmentDate" Type="DateTime" Precision="0" />
+    <Property Name="StartTime" Type="Time" Precision="7" />
+    <Property Name="EndTime" Type="Time" Precision="7" />
+    <Property Name="AppointmentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProblemId" Type="Int32" />
+    <Property Name="PaymentId" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DoctorInfo" Relationship="Self.FK_Appointment_DoctorInfo" FromRole="Appointment" ToRole="DoctorInfo" />
+    <NavigationProperty Name="Hospital" Relationship="Self.FK_Appointment_Hospital" FromRole="Appointment" ToRole="Hospital" />
+    <NavigationProperty Name="Payment" Relationship="Self.FK_Appointment_Payment" FromRole="Appointment" ToRole="Payment" />
+    <NavigationProperty Name="Problem" Relationship="Self.FK_Appointment_Problem" FromRole="Appointment" ToRole="Problem" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Appointment_User" FromRole="Appointment" ToRole="User" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Addresses" Relationship="Self.FK_Address_City" FromRole="City" ToRole="Address" />
+    <NavigationProperty Name="State" Relationship="Self.FK_City_State" FromRole="City" ToRole="State" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CountryCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Addresses" Relationship="Self.FK_Address_Country" FromRole="Country" ToRole="Address" />
+    <NavigationProperty Name="States" Relationship="Self.FK_State_Country" FromRole="Country" ToRole="State" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HospitalId" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DepartmentHelpLineNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Hospital" Relationship="Self.FK_Department_Hospital" FromRole="Department" ToRole="Hospital" />
+    <NavigationProperty Name="DoctorBelongsHospitals" Relationship="Self.FK_DoctorBelongsHospital_Department" FromRole="Department" ToRole="DoctorBelongsHospital" />
+  </EntityType>
+  <EntityType Name="DoctorBelongsHospital">
+    <Key>
+      <PropertyRef Name="DoctorBelongsHospitalId" />
+    </Key>
+    <Property Name="DoctorBelongsHospitalId" Type="Int32" Nullable="false" />
+    <Property Name="DoctorId" Type="Int32" />
+    <Property Name="HospitaId" Type="Int32" />
+    <Property Name="DepartmentId" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_DoctorBelongsHospital_Department" FromRole="DoctorBelongsHospital" ToRole="Department" />
+    <NavigationProperty Name="DoctorInfo" Relationship="Self.FK_DoctorBelongsHospital_DoctorInfo" FromRole="DoctorBelongsHospital" ToRole="DoctorInfo" />
+    <NavigationProperty Name="Hospital" Relationship="Self.FK_DoctorBelongsHospital_Hospital" FromRole="DoctorBelongsHospital" ToRole="Hospital" />
+  </EntityType>
+  <EntityType Name="DoctorInfo">
+    <Key>
+      <PropertyRef Name="DoctorId" />
+    </Key>
+    <Property Name="DoctorId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="RegistrationNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InstitutionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Specality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HospitalId" Type="Int32" />
+    <Property Name="IsVerified" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointment_DoctorInfo" FromRole="DoctorInfo" ToRole="Appointment" />
+    <NavigationProperty Name="DoctorBelongsHospitals" Relationship="Self.FK_DoctorBelongsHospital_DoctorInfo" FromRole="DoctorInfo" ToRole="DoctorBelongsHospital" />
+    <NavigationProperty Name="Hospital" Relationship="Self.FK_DoctorInfo_Hospital" FromRole="DoctorInfo" ToRole="Hospital" />
+    <NavigationProperty Name="User" Relationship="Self.FK_DoctorInfo_User" FromRole="DoctorInfo" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Hospital">
+    <Key>
+      <PropertyRef Name="HospitalId" />
+    </Key>
+    <Property Name="HospitalId" Type="Int32" Nullable="false" />
+    <Property Name="HospitalName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HospitalCategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AddressId" Type="Int32" />
+    <Property Name="PublicSector" Type="Boolean" />
+    <Property Name="Timing" Type="Time" Precision="7" />
+    <Property Name="HospitalEmailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HospitalHelpLineNumber" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Address" Relationship="Self.FK_Hospital_Address" FromRole="Hospital" ToRole="Address" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointment_Hospital" FromRole="Hospital" ToRole="Appointment" />
+    <NavigationProperty Name="Departments" Relationship="Self.FK_Department_Hospital" FromRole="Hospital" ToRole="Department" />
+    <NavigationProperty Name="DoctorBelongsHospitals" Relationship="Self.FK_DoctorBelongsHospital_Hospital" FromRole="Hospital" ToRole="DoctorBelongsHospital" />
+    <NavigationProperty Name="DoctorInfoes" Relationship="Self.FK_DoctorInfo_Hospital" FromRole="Hospital" ToRole="DoctorInfo" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="PaymentFee" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PaymentFor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointment_Payment" FromRole="Payment" ToRole="Appointment" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Payment_User" FromRole="Payment" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Problem">
+    <Key>
+      <PropertyRef Name="ProblemId" />
+    </Key>
+    <Property Name="ProblemId" Type="Int32" Nullable="false" />
+    <Property Name="Problem1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DepartmentId" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointment_Problem" FromRole="Problem" ToRole="Appointment" />
+  </EntityType>
+  <EntityType Name="SecurityQuestion">
+    <Key>
+      <PropertyRef Name="QuestionId" />
+    </Key>
+    <Property Name="QuestionId" Type="Int32" Nullable="false" />
+    <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_SecurityQuestions" FromRole="SecurityQuestions" ToRole="Answer" />
+    <NavigationProperty Name="Answers1" Relationship="Self.FK_Answer_SecurityQuestions1" FromRole="SecurityQuestions" ToRole="Answer" />
+    <NavigationProperty Name="Answers2" Relationship="Self.FK_Answer_SecurityQuestions2" FromRole="SecurityQuestions" ToRole="Answer" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CountryId" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Addresses" Relationship="Self.FK_Address_State" FromRole="State" ToRole="Address" />
+    <NavigationProperty Name="Cities" Relationship="Self.FK_City_State" FromRole="State" ToRole="City" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_State_Country" FromRole="State" ToRole="Country" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserUniqueId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UserTypeId" Type="Int32" />
+    <Property Name="AddressId" Type="Int32" />
+    <Property Name="ActivationCode" Type="Guid" />
+    <Property Name="ResetPasswordCode" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Address" Relationship="Self.FK_User_Address" FromRole="User" ToRole="Address" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_User" FromRole="User" ToRole="Answer" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointment_User" FromRole="User" ToRole="Appointment" />
+    <NavigationProperty Name="DoctorInfoes" Relationship="Self.FK_DoctorInfo_User" FromRole="User" ToRole="DoctorInfo" />
+    <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_User" FromRole="User" ToRole="Payment" />
+    <NavigationProperty Name="UserType" Relationship="Self.FK_User_UserType" FromRole="User" ToRole="UserType" />
+    <NavigationProperty Name="UserLoginDetails" Relationship="Self.FK_UserLoginDetails_User" FromRole="User" ToRole="UserLoginDetails" />
+  </EntityType>
+  <EntityType Name="UserLoginDetail">
+    <Key>
+      <PropertyRef Name="UserLoginDetailsId" />
+    </Key>
+    <Property Name="UserLoginDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="LoginAttemp" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SysGeneratedEmailCode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SysGeneratedMobileCode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IsEmailVerified" Type="Boolean" />
+    <Property Name="IsPhoneNumberVerified" Type="Boolean" />
+    <Property Name="IsForgotPassword" Type="Boolean" />
+    <Property Name="LastPasswordResetDate" Type="DateTime" Precision="0" />
+    <Property Name="LoginMachineIp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastLoginDate" Type="DateTime" Precision="0" />
+    <Property Name="IsActiveUser" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ActivationCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserLoginDetails_User" FromRole="UserLoginDetails" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="UserTypeId" />
+    </Key>
+    <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_UserType" FromRole="UserType" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Address_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Address_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Address_State">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hospital_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="Hospital" Type="Self.Hospital" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="Hospital">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_SecurityQuestions">
+    <End Role="SecurityQuestions" Type="Self.SecurityQuestion" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityQuestions">
+        <PropertyRef Name="QuestionId" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="QuestionId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_SecurityQuestions1">
+    <End Role="SecurityQuestions" Type="Self.SecurityQuestion" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityQuestions">
+        <PropertyRef Name="QuestionId" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="QuestionId2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_SecurityQuestions2">
+    <End Role="SecurityQuestions" Type="Self.SecurityQuestion" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityQuestions">
+        <PropertyRef Name="QuestionId" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="QuestionId3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointment_DoctorInfo">
+    <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="0..1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoctorInfo">
+        <PropertyRef Name="DoctorId" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointment_Hospital">
+    <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hospital">
+        <PropertyRef Name="HospitalId" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="HospitalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointment_Payment">
+    <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="PaymentId" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="PaymentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointment_Problem">
+    <End Role="Problem" Type="Self.Problem" Multiplicity="0..1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problem">
+        <PropertyRef Name="ProblemId" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="ProblemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointment_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_City_State">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_State_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="State" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Department_Hospital">
+    <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hospital">
+        <PropertyRef Name="HospitalId" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="HospitalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorBelongsHospital_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="DoctorBelongsHospital" Type="Self.DoctorBelongsHospital" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="DoctorBelongsHospital">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorBelongsHospital_DoctorInfo">
+    <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="0..1" />
+    <End Role="DoctorBelongsHospital" Type="Self.DoctorBelongsHospital" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoctorInfo">
+        <PropertyRef Name="DoctorId" />
+      </Principal>
+      <Dependent Role="DoctorBelongsHospital">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorBelongsHospital_Hospital">
+    <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+    <End Role="DoctorBelongsHospital" Type="Self.DoctorBelongsHospital" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hospital">
+        <PropertyRef Name="HospitalId" />
+      </Principal>
+      <Dependent Role="DoctorBelongsHospital">
+        <PropertyRef Name="HospitaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorInfo_Hospital">
+    <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+    <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hospital">
+        <PropertyRef Name="HospitalId" />
+      </Principal>
+      <Dependent Role="DoctorInfo">
+        <PropertyRef Name="HospitalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoctorInfo_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="DoctorInfo" Type="Self.DoctorInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="DoctorInfo">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserType">
+    <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="UserTypeId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLoginDetails_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserLoginDetails" Type="Self.UserLoginDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserLoginDetails">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IPHISEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="Self.Address" />
+    <EntitySet Name="Answers" EntityType="Self.Answer" />
+    <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+    <EntitySet Name="Cities" EntityType="Self.City" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="Departments" EntityType="Self.Department" />
+    <EntitySet Name="DoctorBelongsHospitals" EntityType="Self.DoctorBelongsHospital" />
+    <EntitySet Name="DoctorInfoes" EntityType="Self.DoctorInfo" />
+    <EntitySet Name="Hospitals" EntityType="Self.Hospital" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="Problems" EntityType="Self.Problem" />
+    <EntitySet Name="SecurityQuestions" EntityType="Self.SecurityQuestion" />
+    <EntitySet Name="States" EntityType="Self.State" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserLoginDetails" EntityType="Self.UserLoginDetail" />
+    <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+    <AssociationSet Name="FK_Address_City" Association="Self.FK_Address_City">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Address_Country" Association="Self.FK_Address_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Address_State" Association="Self.FK_Address_State">
+      <End Role="State" EntitySet="States" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hospital_Address" Association="Self.FK_Hospital_Address">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="Hospital" EntitySet="Hospitals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Address" Association="Self.FK_User_Address">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_SecurityQuestions" Association="Self.FK_Answer_SecurityQuestions">
+      <End Role="SecurityQuestions" EntitySet="SecurityQuestions" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_SecurityQuestions1" Association="Self.FK_Answer_SecurityQuestions1">
+      <End Role="SecurityQuestions" EntitySet="SecurityQuestions" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_SecurityQuestions2" Association="Self.FK_Answer_SecurityQuestions2">
+      <End Role="SecurityQuestions" EntitySet="SecurityQuestions" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_User" Association="Self.FK_Answer_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointment_DoctorInfo" Association="Self.FK_Appointment_DoctorInfo">
+      <End Role="DoctorInfo" EntitySet="DoctorInfoes" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointment_Hospital" Association="Self.FK_Appointment_Hospital">
+      <End Role="Hospital" EntitySet="Hospitals" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointment_Payment" Association="Self.FK_Appointment_Payment">
+      <End Role="Payment" EntitySet="Payments" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointment_Problem" Association="Self.FK_Appointment_Problem">
+      <End Role="Problem" EntitySet="Problems" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointment_User" Association="Self.FK_Appointment_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
+      <End Role="State" EntitySet="States" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="State" EntitySet="States" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Department_Hospital" Association="Self.FK_Department_Hospital">
+      <End Role="Hospital" EntitySet="Hospitals" />
+      <End Role="Department" EntitySet="Departments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorBelongsHospital_Department" Association="Self.FK_DoctorBelongsHospital_Department">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="DoctorBelongsHospital" EntitySet="DoctorBelongsHospitals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorBelongsHospital_DoctorInfo" Association="Self.FK_DoctorBelongsHospital_DoctorInfo">
+      <End Role="DoctorInfo" EntitySet="DoctorInfoes" />
+      <End Role="DoctorBelongsHospital" EntitySet="DoctorBelongsHospitals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorBelongsHospital_Hospital" Association="Self.FK_DoctorBelongsHospital_Hospital">
+      <End Role="Hospital" EntitySet="Hospitals" />
+      <End Role="DoctorBelongsHospital" EntitySet="DoctorBelongsHospitals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorInfo_Hospital" Association="Self.FK_DoctorInfo_Hospital">
+      <End Role="Hospital" EntitySet="Hospitals" />
+      <End Role="DoctorInfo" EntitySet="DoctorInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoctorInfo_User" Association="Self.FK_DoctorInfo_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="DoctorInfo" EntitySet="DoctorInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_User" Association="Self.FK_Payment_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserType" Association="Self.FK_User_UserType">
+      <End Role="UserType" EntitySet="UserTypes" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLoginDetails_User" Association="Self.FK_UserLoginDetails_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserLoginDetails" EntitySet="UserLoginDetails" />
+    </AssociationSet>
+    <FunctionImport Name="User_Addr_Sec_Ans" ReturnType="Collection(IPHISModel1.User_Addr_Sec_Ans_Result)" />
+  </EntityContainer>
+  <ComplexType Name="User_Addr_Sec_Ans_Result">
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" />
+    <Property Type="String" Name="MiddleName" Nullable="true" />
+    <Property Type="String" Name="LastName" Nullable="true" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" />
+    <Property Type="String" Name="Password" Nullable="true" />
+    <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserUniqueId" Nullable="true" />
+    <Property Type="Int32" Name="UserTypeId" Nullable="true" />
+    <Property Type="Int32" Name="AddressId" Nullable="true" />
+    <Property Type="Guid" Name="ActivationCode" Nullable="true" />
+    <Property Type="String" Name="ResetPasswordCode" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" />
+    <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="UpdatedDate" Nullable="true" />
+    <Property Type="String" Name="UpdatedBy" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="AddressId1" Nullable="false" />
+    <Property Type="String" Name="AddressLine1" Nullable="true" />
+    <Property Type="String" Name="AddressLine2" Nullable="true" />
+    <Property Type="String" Name="Pincode" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CityId" Nullable="true" />
+    <Property Type="Int32" Name="StateId" Nullable="true" />
+    <Property Type="Int32" Name="CountryId" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate1" Nullable="true" />
+    <Property Type="String" Name="CreatedBy1" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="UpdatedDate1" Nullable="true" />
+    <Property Type="String" Name="UpdatedBy1" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="AnswerId" Nullable="false" />
+    <Property Type="Int32" Name="UserId1" Nullable="true" />
+    <Property Type="Int32" Name="QuestionId1" Nullable="true" />
+    <Property Type="String" Name="Answer1" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="QuestionId2" Nullable="true" />
+    <Property Type="String" Name="Answer2" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="QuestionId3" Nullable="true" />
+    <Property Type="String" Name="Answer3" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="CreatedDate2" Nullable="true" />
+    <Property Type="String" Name="CreatedBy2" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="UpdatedDate2" Nullable="true" />
+    <Property Type="String" Name="UpdatedBy2" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="QuestionId" Nullable="false" />
+    <Property Type="String" Name="Question" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate3" Nullable="true" />
+    <Property Type="String" Name="CreatedBy3" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="UpdatedDate3" Nullable="true" />
+    <Property Type="String" Name="UpdatedBy3" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

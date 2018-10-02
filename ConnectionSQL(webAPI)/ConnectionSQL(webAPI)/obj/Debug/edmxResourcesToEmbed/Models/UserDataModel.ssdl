@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IPHISModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnswerId" />
+    </Key>
+    <Property Name="AnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SecurityQuestionId" Type="int" />
+    <Property Name="Answer1" Type="varchar(max)" />
+    <Property Name="Answer2" Type="varchar(max)" />
+    <Property Name="Answer3" Type="varchar(max)" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="varchar(max)" />
+    <Property Name="StateId" Type="int" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="varchar(max)" />
+    <Property Name="CountryCode" Type="varchar" MaxLength="10" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SecurityQuestion">
+    <Key>
+      <PropertyRef Name="SecurityQuestionId" />
+    </Key>
+    <Property Name="SecurityQuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SecurityQuestion1" Type="varchar(max)" />
+    <Property Name="SecurityQuestion2" Type="varchar(max)" />
+    <Property Name="SecurityQuestion3" Type="varchar(max)" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateName" Type="varchar(max)" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar(max)" />
+    <Property Name="MiddleName" Type="varchar(max)" />
+    <Property Name="LastName" Type="varchar(max)" />
+    <Property Name="EmailAddress" Type="varchar(max)" />
+    <Property Name="Password" Type="varchar(max)" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+    <Property Name="UserUniqueId" Type="varchar(max)" />
+    <Property Name="CountryId" Type="varchar" MaxLength="10" />
+    <Property Name="StateId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="AddressLine1" Type="varchar(max)" />
+    <Property Name="AddressLine2" Type="varchar(max)" />
+    <Property Name="Pincode" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="UserTypeId" Type="int" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="ActivationCode" Type="uniqueidentifier" />
+    <Property Name="ResetPasswordCode" Type="nchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="UserLoginDetails">
+    <Key>
+      <PropertyRef Name="UserLoginDetailsId" />
+    </Key>
+    <Property Name="UserLoginDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="LoginAttemp" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="SysGeneratedEmailCode" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="SysGeneratedMobileCode" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="IsEmailVerified" Type="bit" />
+    <Property Name="IsPhoneNumberVerified" Type="bit" />
+    <Property Name="IsForgotPassword" Type="bit" />
+    <Property Name="LastPasswordResetDate" Type="date" />
+    <Property Name="LoginMachineIp" Type="varchar" MaxLength="50" />
+    <Property Name="LastLoginDate" Type="date" />
+    <Property Name="IsActiveUser" Type="bit" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserSecAnsDetails">
+    <Key>
+      <PropertyRef Name="UserSecAnsDetailsId" />
+    </Key>
+    <Property Name="UserSecAnsDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="SecurityQuestionId" Type="int" />
+    <Property Name="AnswerId" Type="int" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="UserTypeId" />
+    </Key>
+    <Property Name="UserTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Answer_SecurityQuestion">
+    <End Role="SecurityQuestion" Type="Self.SecurityQuestion" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityQuestion">
+        <PropertyRef Name="SecurityQuestionId" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="SecurityQuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_City_State">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_State_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="State" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserType">
+    <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="UserTypeId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLoginDetails_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserLoginDetails" Type="Self.UserLoginDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserLoginDetails">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSecAnsDetails_Answer">
+    <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+    <End Role="UserSecAnsDetails" Type="Self.UserSecAnsDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="AnswerId" />
+      </Principal>
+      <Dependent Role="UserSecAnsDetails">
+        <PropertyRef Name="AnswerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSecAnsDetails_SecurityQuestion">
+    <End Role="SecurityQuestion" Type="Self.SecurityQuestion" Multiplicity="0..1" />
+    <End Role="UserSecAnsDetails" Type="Self.UserSecAnsDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityQuestion">
+        <PropertyRef Name="SecurityQuestionId" />
+      </Principal>
+      <Dependent Role="UserSecAnsDetails">
+        <PropertyRef Name="SecurityQuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSecAnsDetails_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserSecAnsDetails" Type="Self.UserSecAnsDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserSecAnsDetails">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IPHISModelStoreContainer">
+    <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SecurityQuestion" EntityType="Self.SecurityQuestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLoginDetails" EntityType="Self.UserLoginDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserSecAnsDetails" EntityType="Self.UserSecAnsDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Answer_SecurityQuestion" Association="Self.FK_Answer_SecurityQuestion">
+      <End Role="SecurityQuestion" EntitySet="SecurityQuestion" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
+      <End Role="State" EntitySet="State" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="State" EntitySet="State" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserType" Association="Self.FK_User_UserType">
+      <End Role="UserType" EntitySet="UserType" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLoginDetails_User" Association="Self.FK_UserLoginDetails_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserLoginDetails" EntitySet="UserLoginDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSecAnsDetails_Answer" Association="Self.FK_UserSecAnsDetails_Answer">
+      <End Role="Answer" EntitySet="Answer" />
+      <End Role="UserSecAnsDetails" EntitySet="UserSecAnsDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSecAnsDetails_SecurityQuestion" Association="Self.FK_UserSecAnsDetails_SecurityQuestion">
+      <End Role="SecurityQuestion" EntitySet="SecurityQuestion" />
+      <End Role="UserSecAnsDetails" EntitySet="UserSecAnsDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSecAnsDetails_User" Association="Self.FK_UserSecAnsDetails_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserSecAnsDetails" EntitySet="UserSecAnsDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

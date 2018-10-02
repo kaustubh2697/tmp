@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b1568096055b490eb9194e6ab9e01f84" Name="Diagram1">
+        <EntityTypeShape EntityType="IPHISModel.Answer" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel.City" Width="1.5" PointX="10.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel.Country" Width="1.5" PointX="5.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel.SecurityQuestion" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel.State" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel.sysdiagram" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel.User" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel.UserLoginDetail" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel.UserSecAnsDetail" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel.UserType" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <AssociationConnector Association="IPHISModel.FK_Answer_SecurityQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel.FK_UserSecAnsDetails_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel.FK_City_State" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel.FK_State_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel.FK_UserSecAnsDetails_SecurityQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel.FK_User_UserType" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel.FK_UserLoginDetails_User" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel.FK_UserSecAnsDetails_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,78 @@
+﻿@model ConnectionSQL_webAPI_.Models.Answer
+@{
+    /**/
+
+    ViewBag.Title = "Question";
+}
+<div class="container">
+    <h2 class="page-sub-header">Registration</h2>
+
+    @using (Html.BeginForm("Question", "User", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4 class="page-sub-header"><i>Step 2</i></h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.SecurityQuestionId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.SecurityQuestionId, new SelectList(Model.QuestionCollection, "SecurityQuestionId", "SecurityQuestion1"), "Select")
+                    @Html.ValidationMessageFor(model => model.SecurityQuestionId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Answer1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Answer1)
+                    @Html.ValidationMessageFor(model => model.Answer1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SecurityQuestionId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.SecurityQuestionId, new SelectList(Model.QuestionCollection, "SecurityQuestionId", "SecurityQuestion2"), "Select")
+                    @Html.ValidationMessageFor(model => model.SecurityQuestionId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Answer2, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Answer2)
+                    @Html.ValidationMessageFor(model => model.Answer2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SecurityQuestionId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.SecurityQuestionId, new SelectList(Model.QuestionCollection, "SecurityQuestionId", "SecurityQuestion3"), "Select")
+                    @Html.ValidationMessageFor(model => model.SecurityQuestionId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Answer3, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Answer3)
+                    @Html.ValidationMessageFor(model => model.Answer3, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Register" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+        <p>
+            @Html.ActionLink("Back", "Registration")
+        </p>
+    }
+    <hr />
+</div>

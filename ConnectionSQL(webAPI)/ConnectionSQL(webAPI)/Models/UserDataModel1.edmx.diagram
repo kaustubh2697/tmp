@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="42a9467625b543fdb39453d32556b6b8" Name="Diagram1">
+        <EntityTypeShape EntityType="IPHISModel1.Address" Width="1.5" PointX="7.5" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.Answer" Width="1.5" PointX="15" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.Appointment" Width="1.5" PointX="12" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.City" Width="1.5" PointX="5.25" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.Country" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.Department" Width="1.5" PointX="12" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.DoctorBelongsHospital" Width="1.5" PointX="14.25" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.DoctorInfo" Width="1.5" PointX="15" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.Hospital" Width="1.5" PointX="9.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.Payment" Width="1.5" PointX="12" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.Problem" Width="1.5" PointX="9.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.SecurityQuestion" Width="1.5" PointX="12.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.State" Width="1.5" PointX="3" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.User" Width="1.5" PointX="9.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.UserLoginDetail" Width="1.5" PointX="12" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPHISModel1.UserType" Width="1.5" PointX="7.5" PointY="13.375" IsExpanded="true" />
+        <AssociationConnector Association="IPHISModel1.FK_Address_City" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_Address_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_Address_State" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_Hospital_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_User_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_Answer_SecurityQuestions" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_Answer_SecurityQuestions1" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_Answer_SecurityQuestions2" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="IPHISModel1.FK_Answer_User" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_Appointment_DoctorInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_Appointment_Hospital" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_Appointment_Payment" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_Appointment_Problem" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_Appointment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_City_State" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_State_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_Department_Hospital" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_DoctorBelongsHospital_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_DoctorBelongsHospital_DoctorInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_DoctorBelongsHospital_Hospital" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_DoctorInfo_Hospital" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_DoctorInfo_User" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_Payment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_User_UserType" ManuallyRouted="false" />
+        <AssociationConnector Association="IPHISModel1.FK_UserLoginDetails_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

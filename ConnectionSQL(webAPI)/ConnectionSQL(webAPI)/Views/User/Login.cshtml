@@ -1,0 +1,113 @@
+﻿@model ConnectionSQL_webAPI_.Models.User
+
+@{
+    ViewBag.Title = "Login";
+}
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li><img class="nav-icon" src="~/Images/Icon/Home.png" />@Html.ActionLink("Home", "Index", "Intro")</li>
+        <li><img class="nav-icon" src="~/Images/Icon/About1.png" />@Html.ActionLink("About", "About", "Home")</li>
+        <li style="width:95px"><img class="nav-icon" src="~/Images/Icon/Contact.png" />@Html.ActionLink("Contact", "Contact", "Home")</li>
+        <li class="emergency" style="width:115px"><img class="nav-icon" src="~/Images/Icon/Emergency.png" />@Html.ActionLink("Emergency", "Contact", "Home")</li>
+        <li style="width:95px"><img class="nav-icon" src="~/Images/Icon/Register.png" />@Html.ActionLink("Register", "Registration", "User")</li>
+        <li style="float:right"><img class="nav-icon" src="~/Images/Icon/Login.png" />@Html.ActionLink("Login", "Login", "User")</li>
+    </ul>
+</div>
+    </div>
+</div>
+<div class="container">
+    <h2 class="page-sub-header">Login</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4 class="page-sub-header">User</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UpdatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UpdatedDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UpdatedDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UpdatedBy, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UpdatedBy, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UpdatedBy, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <p>@Html.ActionLink("Forgot password?", "ForgotPassword")</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Login" class="btn btn-default" />
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                <div class="col-md-offset-2 col-md-2">
+                    <label class="label-success">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                </div>
+            </div>*@
+        </div>
+    }
+    <div>
+        <p class="page-sub-header">
+            If You Are Not Registered Yet, @Html.ActionLink("Register", "Registration") Here.
+        </p>
+    </div>
+    <hr />
+</div>
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
